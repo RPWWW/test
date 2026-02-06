@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Finance Quest 🎓</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        text-align: center;
+        padding: 30px;
+    }
+    .card {
+        background: rgba(0,0,0,0.6);
+        padding: 25px;
+        border-radius: 12px;
+        max-width: 600px;
+        margin: auto;
+        box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+    button {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        background: #1abc9c;
+        color: black;
+    }
+    button:hover {
+        background: #16a085;
+    }
+    .score {
+        font-size: 20px;
+        margin-top: 15px;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>📈 Finance Quest</h1>
+<p>Révise la théorie financière en mode jeu</p>
+
+<div class="card" id="game">
+    <h2 id="question"></h2>
+    <div id="answers"></div>
+    <p class="score" id="score"></p>
+</div>
+
+<script>
+const questions = [
+    {
+        q: "Quel est l’objectif principal de l’entreprise en finance ?",
+        a: [
+            "Maximiser le chiffre d’affaires",
+            "Maximiser la valeur de l’entreprise",
+            "Minimiser les coûts",
+            "Distribuer un maximum de dividendes"
+        ],
+        correct: 1
+    },
+    {
+        q: "La VAN mesure :",
+        a: [
+            "Le risque d’un projet",
+            "La rentabilité comptable",
+            "La création de valeur d’un projet",
+            "Le taux d’actualisation"
+        ],
+        correct: 2
+    },
+    {
+        q: "Dans un marché efficient au sens semi-fort, le prix intègre :",
+        a: [
+            "L’information passée uniquement",
+            "L’information publique et passée",
+            "L’information privée",
+            "Aucune information"
+        ],
+        correct: 1
+    },
+    {
+        q: "Selon Modigliani et Miller (marchés parfaits), la structure financière :",
+        a: [
+            "Augmente toujours la valeur",
+            "Réduit le risque",
+            "N’affecte pas la valeur de l’entreprise",
+            "Favorise uniquement la dette"
+        ],
+        correct: 2
+    },
+    {
+        q: "La formule de Gordon-Shapiro est :",
+        a: [
+            "P0 = BPA × r",
+            "P0 = DPA / r",
+            "P0 = DPA × r",
+            "P0 = VAN / r"
+        ],
+        correct: 1
+    }
+];
+
+let index = 0;
+let score = 0;
+
+function loadQuestion() {
+    document.getElementById("score").innerText = "";
+    const q = questions[index];
+    document.getElementById("question").innerText = q.q;
+    const answersDiv = document.getElementById("answers");
+    answersDiv.innerHTML = "";
+
+    q.a.forEach((ans, i) => {
+        const btn = document.createElement("button");
+        btn.innerText = ans;
+        btn.onclick = () => checkAnswer(i);
+        answersDiv.appendChild(btn);
+    });
+}
+
+function checkAnswer(i) {
+    if (i === questions[index].correct) {
+        score++;
+        alert("✅ Bonne réponse !");
+    } else {
+        alert("❌ Mauvaise réponse");
+    }
+    index++;
+    if (index < questions.length) {
+        loadQuestion();
+    } else {
+        endGame();
+    }
+}
+
+function endGame() {
+    document.getElementById("question").innerText = "🎉 Partie terminée !";
+    document.getElementById("answers").innerHTML = "";
+    document.getElementById("score").innerText =
+        "Score final : " + score + " / " + questions.length;
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>
