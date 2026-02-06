@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>ARChE - Université de Lorraine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f6f9}
+header{background:#004b93;color:white;padding:15px 25px;font-size:1.4em}
+.container{display:flex;justify-content:center;align-items:center;min-height:calc(100vh - 80px)}
+.card{background:white;padding:40px;border-radius:6px;max-width:420px;width:90%;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,.15);border-top:6px solid #004b93}
+h1{color:#004b93}
+button{background:#004b93;color:white;border:none;padding:14px 28px;font-size:1em;border-radius:4px}
+.hidden{display:none}
+.icon{font-size:3em}
+footer{position:fixed;bottom:10px;width:100%;text-align:center;color:#888;font-size:.8em}
+</style>
+</head>
+<body>
+<header>ARChE – Université de Lorraine</header>
+<div class="container">
+<div id="step1" class="card">
+<h1>Sujet : Risque et assurance</h1>
+<p>Session d'examen sécurisée.<br>Le temps sera décompté dès l'ouverture.</p>
+<button id="b1">Accéder à l'examen</button>
+</div>
+<div id="step2" class="card hidden">
+<div class="icon">🔊</div>
+<h1>Bienvenue sur ARChE</h1>
+<p><strong>Configuration requise</strong><br><br>Veuillez augmenter le volume avant de continuer.</p>
+<button id="b2">Confirmer et lancer</button>
+</div>
+</div>
+<footer>© Université de Lorraine – Plateforme ARChE</footer>
+<script>
+document.getElementById("b1").onclick=function(){
+step1.classList.add("hidden");
+step2.classList.remove("hidden");
+};
+document.getElementById("b2").onclick=function(){
+window.location.href="https://www.youtube.com/watch?v=oHg5SJYRHA0&autoplay=1";
+};
+</script>
+</body>
+</html>
